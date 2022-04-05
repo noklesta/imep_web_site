@@ -1,0 +1,94 @@
+.campl-app-footer {color: #fff;}
+.campl-app-footer-content { padding: 0 20px; text-align: left;}
+.campl-app-footer-content img { padding: 0 10px 0 0;}
+legend {width:50%; float: left;}
+.campl-no-padding {padding:0;}
+.campl-min-padding {padding: 0 20px 14px;}
+.campl-nav-tabs, .campl-nav-pills {font-size: 14px;font-weight: 200;line-height: 22px;margin-bottom: 12px;}
+.campl-nav-tabs > li > a {text-decoration: none;background-color: #f1efed;color: #0072CF;}
+.tab-pane .campl-content-container {padding: 10px 20px;}
+.campl-listing-title {font-family: verdana,arial,sans-serif;font-size: 14px;font-weight: bold;line-height: 16px;margin:0 0 4px 0;}
+.results .campl-content-container {padding: 20px 20px 10px;}
+.campl-control-group {margin-bottom: 9px;}
+.campl-search-input {height: 36px;min-height: 36px; padding-bottom: 0px; padding-top: 0px;}
+.campl-search-input input.campl-search-submit {height: 37px;width: 36px; padding-bottom: 0; padding-top: 0}
+.user_identity p {padding:0 0 0 12px;}
+
+.visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
+.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus { clip: auto; height: auto; margin: 0; overflow: visible; position: static; width: auto; }
+.invisible { visibility: hidden; }
+
+/* Tables */
+td, th { vertical-align: top; }
+table {max-width: 100%;background-color: transparent;border-collapse: collapse;border-spacing: 0;}
+.campl-table {width: 100%;margin-bottom: 18px;}
+.campl-table th,.campl-table td {padding: 10px 15px;line-height: 18px;text-align: left;vertical-align: top}
+.campl-table th {font-weight: bold;}
+.campl-table thead th {vertical-align: bottom;}
+.campl-table caption + thead tr:first-child th,
+.campl-table caption + thead tr:first-child td,
+.campl-table colgroup + thead tr:first-child th,
+.campl-table colgroup + thead tr:first-child td,
+.campl-table thead:first-child tr:first-child th,
+.campl-table thead:first-child tr:first-child td {border-top: 0;}
+
+.campl-table-condensed th,.campl-table-condensed td {padding: 4px 5px;}
+.campl-table-bordered {border-left:1px solid #e4e4e4;border-right:1px solid #e4e4e4;border-collapse: separate;border-left: 0;}
+.lt-ie8 .campl-table-bordered {border-collapse: collapsed;}
+
+.campl-table-bordered td { border-left: 1px solid #e4e4e4;}
+.campl-table-bordered caption + thead tr:first-child th,
+.campl-table-bordered caption + tbody tr:first-child th,
+.campl-table-bordered caption + tbody tr:first-child td,
+.campl-table-bordered colgroup + thead tr:first-child th,
+.campl-table-bordered colgroup + tbody tr:first-child th,
+.campl-table-bordered colgroup + tbody tr:first-child td,
+.campl-table-bordered thead:first-child tr:first-child th,
+.campl-table-bordered tbody:first-child tr:first-child th,
+.campl-table-bordered tbody:first-child tr:first-child td {border-top: 0;}
+
+.campl-table-heading{display:none;font-weight:bold;padding-right: 10px; white-space: wrap;}
+
+.campl-table-condensed tr[is-printed='printed'] {
+    background-color: #1E88E5;
+}
+
+caption{background:#fff;padding:5px 0}
+.campl-responsive-table{position:relative}
+.campl-expanded-table{width:1074px;}
+.campl-full-width-table{width:1024px; max-width:1024px;}
+
+.campl-site-search {
+    padding: 15px 0 15px 15px;
+    padding-top: 15px;
+    padding-right: 0px;
+    padding-bottom: 15px;
+    padding-left: 15px;
+    float: none;
+}
+input:invalid, textarea:invalid { background-color: #f0dddd; }
+
+/* mobile stuff */
+@media (max-width: 1000px) {
+	/*Change main nav*/
+	.campl-global-navigation{width:280px}
+	.campl-global-navigation li{width:33%}
+	.campl-global-navigation li a{padding:25px 10px}
+	.campl-header-container{width:auto;float:left}
+}
+
+@media (max-width: 767px) {
+    .campl-page-title{font-size: 28px;line-height: 28px;margin-bottom:0} 
+/*reduced line height*/
+    h2, .campl-slide-caption-txt,  legend, .campl-highlight-day{font-size: 22px;line-height: 24px;}
+/*reduced font size and line height*/
+    .campl-site-box {float: left;}
+/*fix height of global header (contents absolutely positioned)*/
+.campl-header-container {height: 68px;}
+.collapse {display:none}
+.campl-min-padding h1 {padding-top: 10px;}
+.campl-user_identity {padding:0 20px;}
+.campl-user_identity p {padding:0;}
+
+}
+

@@ -1,0 +1,59 @@
+/* CSS Document */
+.card-pin {
+	text-decoration: none;
+	text-align: center;
+}
+.card-pin .card-inner {
+	position: relative;
+	overflow: hidden;
+	margin-bottom: 30px;
+	text-decoration: none;
+	text-align: center;
+}
+.card-pin .card-inner img {
+	display: block;
+	border: 1px solid #e3e3e3;
+}
+.card-pin .card-inner img:hover {
+	cursor: pointer;
+}
+.card-pin .card-inner img:hover + a {
+	transform: translate3d(0, -100%, 0);
+}
+.card-pin .card-inner > a {
+	position: absolute;
+	display: flex;
+	flex-flow: column nowrap;
+	height: 100%;
+	width: 100%;
+	background-color: rgba(22,35,45,0.85);
+	opacity: .9;
+	transform: translate3d(0, -65px, 0);
+	transition: .2s ease-in-out;
+	padding: 0 20px 20px;
+	text-decoration: none;
+}
+.card-pin .card-inner > a:hover {
+	transform: translate3d(0, -100%, 0);
+}
+.card-pin .card-inner > a h2 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0;
+	height: 65px;
+	color: #fed443;
+	text-align: center;
+	font-weight: normal;
+	text-decoration: none;
+}
+.card-pin .card-inner > a p {
+	font-size: 1.1em;
+}
+.card-pin .card-inner > a p, .card-pin .card-inner > a a {
+	color: #FFF;
+}
+.card-pin .card-inner .card-btn {
+	margin: 20px 0 0 0;
+	text-align: center;
+}

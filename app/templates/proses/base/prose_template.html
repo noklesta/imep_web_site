@@ -1,0 +1,104 @@
+<!-- Common to all Proses views -->
+{% extends "proses/base/template.html" %}
+{% load static %}
+{% block styles %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+    <link rel="stylesheet" href="{% static 'proses/proses_1.css' %}">
+    <link rel="stylesheet" href="{% static 'proses/mbr-additional.css' %}">
+    <link rel="stylesheet" href="{% static 'proses/card-pin.css' %}"/>
+    <link rel="stylesheet" href="{% static 'proses/style.css' %}"/>
+{% endblock %}
+
+{% block head_title %}IMEP - Index of Middle English Prose{% endblock %}
+{% block template_navbar %}
+    <nav class="col-lg-12 navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+<!--        <div class="navbar-brand">
+                <span class="navbar-logo">
+                    <a href="{% url 'proses:index' %}">
+                         <img src="{% static 'images/book-icon.png' %}" alt="IMEP" style="height: 3.8rem;">
+                    </a>
+                </span>
+        </div>
+-->
+        <a class="navbar-brand" href="{% url 'proses:index' %}">IMEP</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+                class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item {{ index_home }}">
+                    <a class="nav-link" href="{% url 'proses:index' %}">Home <span
+                            class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item {{ incipit }}"><a class="nav-link" href="{% url 'proses:incipit' %}">Incipits</a>
+                </li>
+                <li class="nav-item {{ explicit }}"><a class="nav-link" href="{% url 'proses:explicit' %}">Reverse Explicits</a>
+                </li>
+
+                <li class="nav-item {{ title }}"><a class="nav-link" href="{% url 'proses:title' %}">Titles and Rubrics</a></li>
+                <li class="nav-item {{ subject }}"><a class="nav-link" href="{% url 'proses:subject' %}">General Index</a>
+                </li>
+<!--                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+                                                 role="button"
+                                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Admin</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/admin">Control</a>
+                    </div>
+                </li>
+                -->
+            </ul>
+            {% block search_bar %}
+                <!-- override this for your own search bar -->
+                <form action="{% block search_action %}#{% endblock %}" method="get">
+                    <fieldset>
+                        <div class="campl-control-group">
+                            <div class="campl-search-input">
+                                <input type="text" id="query" name="query" size="40" value="{{ query_text }}"
+                                       style="height: 39px;vertical-align: center"/>
+
+                                <input class="campl-search-submit " type="image"
+                                       src="{% static 'images/btn-search-inpage.png' %}"
+                                       style="width:39px;height:39px;vertical-align: center"/>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            {% endblock %}
+        </div>
+    </nav>
+{% endblock %}
+
+{% block footer %}
+    <section id="footer">
+        <div class="row bg-dark text-white">
+            <div class="col-lg-2">
+                <div class="media-wrap">
+                    <a href="https://www.cdh.cam.ac.uk">
+                        <img src="{% static 'images/cdh-lab.png' %}" alt="CDH-lab" width="178">
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-7 text-center">
+                <div class="footer-text">
+                    <p style="padding-top: 10px;">A CDH Lab project built and supported by <br>Cambridge University Library Development team</p>
+                </div>
+                <!--
+                <a class="text-primary" href="https://www.lib.cam.ac.uk">Cambridge University Libraries</a> &middot;
+                <a class="text-primary" href="https://www.cam.ac.uk">University of Cambridge</a>
+                -->
+            </div>
+            <div class="col-lg-2">
+                <div class="media-wrap" style="alignment: right;">
+                    <a href="https://www.lib.cam.ac.uk">
+                        <img src="{% static 'images/ucamlib-logo.png' %}" alt="Cambridge University Libraries" width="178" style="padding-top: 10px;">
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+{% endblock %}
+
+
+

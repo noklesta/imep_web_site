@@ -1,0 +1,247 @@
+{%  extends "proses/base/prose_template.html" %}
+{% load static %}
+{% block app_header %}
+    {# If your application itself needs its own js and css, load it here. #}
+    <link rel="stylesheet" type="text/css" href="{% static 'proses/style.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'proses/card-pin.css' %}"/>
+{% endblock %}
+
+{% block cdh_template_navbar %}
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark"><a class="navbar-brand" href="#">IMEP</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+            class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active"><a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Admin </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown"><a class="dropdown-item" href="/proses/import#">Import</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a></div>
+            </li>
+            <li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+{% endblock %}
+
+{% block site_name %}Index of Middle English Proses{% endblock %}
+{% block campl_tabs_header %}{% endblock %}
+{% block head_title %}A CDHLab web site{% endblock %}
+{% block search_bar %}{% endblock %}
+
+
+{% block page_content %}
+    <br>
+
+    <div class="row">
+        <div class="card-pin col-lg-3 col-sm-6 col-md-3">
+
+            <div class="card-inner">
+                {% block card_4 %}
+                    <img typeof="foaf:Image" class="img-responsive" src="{% static 'images/incipits_panel.png' %}"
+                         width="360" height="240" alt="Incipits"> <a href="{{ url }}/proses/incipits">
+                    <h2>Incipits</h2>
+                    <p>{{ num_incipits }}</p>
+                    <!-- <p class="card-btn"> <span class="btn btn-md btn-primary">button </span> </p> -->
+                </a>
+                {% endblock %}
+            </div>
+
+
+        </div>
+        <div class="card-pin col-lg-3 col-sm-6 col-md-3">
+            <div class="card-inner">
+                {% block card_3 %}
+                    <img typeof="foaf:Image" class="img-responsive" src="{% static 'images/imep-1.jpg' %}"
+                         width="360" height="240" alt="Incipits"> <a href="{{ url }}/proses/explicits">
+                    <h2>Reverse Explicits</h2>
+                    <p>{{ num_explicits }}</p>
+                    <!-- <p class="card-btn"> <span class="btn btn-md btn-primary">button </span> </p> -->
+                </a>
+                {% endblock %}
+            </div>
+        </div>
+        <div class="card-pin col-lg-3 col-sm-6 col-md-3">
+            <div class="card-inner">
+                {% block card_1 %}
+                    <img typeof="foaf:Image" class="img-responsive" src="{% static 'images/imep-2.jpg' %}"
+                         width="360" height="240" alt="Incipits"> <a href="{{ url }}/proses/titles">
+                    <h2>Titles, Rubrics and Colophons</h2>
+                    <p>{{ num_titles }}</p>
+                    <!-- <p class="card-btn"> <span class="btn btn-md btn-primary">button </span> </p> -->
+                </a>
+                {% endblock %}
+            </div>
+        </div>
+        <div class="card-pin col-lg-3 col-sm-6 col-md-3">
+            <div class="card-inner">
+                {% block card_2 %}
+                    <img typeof="foaf:Image" class="img-responsive" src="{% static 'images/imep-4.jpg' %}"
+                         width="360" height="240" alt="General Index"> <a href="{{ url }}/proses/subjects">
+                    <h2>General Index</h2>
+                    <p>{{ num_subjects }}</p>
+                    <!-- <p class="card-btn"> <span class="btn btn-md btn-primary">button </span> </p> -->
+                </a>
+                {% endblock %}
+            </div>
+        </div>
+
+    </div>
+
+
+{% endblock page_content %}
+
+    {% block content_body %}
+        <div class="row">
+            <div class="card-pin col-lg-4 col-sm-6 col-md-4">
+
+                <div class="card-inner">
+                    {% block card_1 %}
+                        <img typeof="foaf:Image" class="img-responsive" src="../images/incipits_panel.png"
+                             width="309" height="240" alt="Portail Biblissima"> <a
+                            href="http://beta.biblissima.fr">
+                        <h2>Titles</h2>
+                        <p>Some text about Titles</p>
+                        <!-- <p class="card-btn"> <span class="btn btn-md btn-primary">button </span> </p> -->
+                    </a>
+                    {% endblock %}
+                </div>
+
+
+            </div>
+            <div class="card-pin col-lg-4 col-sm-6 col-md-4">
+
+                <div class="card-inner">
+                    {% block card_2 %}
+                        <img typeof="foaf:Image" class="img-responsive" src="../images/incipits_panel.png"
+                             width="309" height="240" alt="Portail Biblissima"> <a
+                            href="http://beta.biblissima.fr">
+                        <h2>Authors</h2>
+                        <p>Some text about Authors</p>
+                        <!-- <p class="card-btn"> <span class="btn btn-md btn-primary">button </span> </p> -->
+                    </a>
+                    {% endblock %}</div>
+
+            </div>
+            <div class="card-pin col-lg-4 col-sm-6 col-md-4">
+
+                <div class="card-inner">
+                    {% block card_3 %}
+                        <img typeof="foaf:Image" class="img-responsive" src="../images/incipits_panel.png"
+                             width="309" height="240" alt="Portail Biblissima"> <a
+                            href="http://beta.biblissima.fr">
+                        <h2>Subjects</h2>
+                        <p>Some text about Subjects</p>
+                        <!-- <p class="card-btn"> <span class="btn btn-md btn-primary">button </span> </p> -->
+                    </a>
+                    {% endblock %}
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="card-pin col-lg-4 col-sm-6 col-md-4">
+                <div class="card-inner">
+                    {% block card_4 %}
+                        <img typeof="foaf:Image" class="img-responsive" src="../images/incipits_panel.png"
+                             width="309" height="240" alt="Portail Biblissima"> <a
+                            href="http://beta.biblissima.fr">
+                        <h2>Incipits</h2>
+                        <p>Some text about incipits</p>
+                        <!-- <p class="card-btn"> <span class="btn btn-md btn-primary">button </span> </p> -->
+                    </a>
+                    {% endblock %}
+                </div>
+            </div>
+            <div class="card-pin col-lg-4 col-sm-6 col-md-4">
+                <div class="card-inner">
+                    {% block card_5 %}
+                        <img typeof="foaf:Image" class="img-responsive" src="../images/incipits_panel.png"
+                             width="309" height="240" alt="Portail Biblissima"> <a
+                            href="http://beta.biblissima.fr">
+                        <h2>Explicits</h2>
+                        <p>Some text about Explicits</p>
+                        <!-- <p class="card-btn"> <span class="btn btn-md btn-primary">button </span> </p> -->
+                    </a>
+                    {% endblock %}
+                </div>
+            </div>
+            <div class="card-pin col-lg-4 col-sm-6 col-md-4">
+                <div class="card-inner">
+                    {% block card_6 %}
+                        <img typeof="foaf:Image" class="img-responsive" src="../images/incipits_panel.png"
+                             width="309" height="240" alt="Portail Biblissima"> <a
+                            href="http://beta.biblissima.fr">
+                        <h2>Rubrics</h2>
+                        <p>Some text about Rubrics</p>
+                        <!-- <p class="card-btn"> <span class="btn btn-md btn-primary">button </span> </p> -->
+                    </a>{% endblock %}
+                </div>
+            </div>
+
+        </div>
+    {% endblock %}
+
+{% block cdh-menu-list %}
+    <!--
+    <li><a href="{{ url }}/proses/incipits">Incipits</a></li>
+    <li><a href="{{ url }}/proses/explicits">Explicits</a></li>
+    <li><a href="{{ url }}/proses/subjects">Subjects</a></li>
+    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Section 4 <span
+            class="caret"></span></a>
+        <ul class="dropdown-menu">
+            <li><a href="#section41">Section 4-1</a></li>
+            <li><a href="#section42">Section 4-2</a></li>
+        </ul>
+    </li>
+--->
+{% endblock %}
+
+{% block local_footer %}
+    <div class="campl-row campl-local-footer campl-app-footer">
+        <div class="campl-wrap clearfix">
+            <div class="campl-column6 campl-footer-navigation">
+                <p class="campl-app-footer-content">
+                    {% block blurb %}
+                                           <a href="https://www.cdh.cam.ac.uk/lab"><img class="campl-scale-with-grid"
+                                                        src="{% static 'images/cdh/cdh-lab.png' %}" width="178"
+                                                        alt="CDH Lab"></a>
+
+                    {% endblock %}
+                </p>
+            </div>
+            <div class="campl-column3 campl-footer-navigation">
+                <div class="campl-content-container campl-navigation-list">
+                    {% block footer1 %}<h3><a href="http://www.lib.cam.ac.uk/research/digital-humanities">Digital Humanities</a></h3>{% endblock %}
+                </div>
+            </div>
+            <div class="campl-column3 campl-footer-navigation last">
+                <div class="campl-content-container campl-navigation-list">
+                    {% block footer2 %}<h3><a href="http://www.lib.cam.ac.uk">Software Development at the Cambridge University Library</a></h3>{% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block campl_foot_js %}
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+{% endblock %}

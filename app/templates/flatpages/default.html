@@ -1,0 +1,9 @@
+{% extends "proses/base/template.html" %}
+    {% block head_subtitle %}
+{{ flatpage.title }}
+    {% endblock %}
+{% block content_body %}
+  <div class="container">
+    {{ flatpage.content }}
+  </div>
+{% endblock %}

@@ -1,0 +1,311 @@
+{% extends "proses/base/prose_template.html" %}
+{% load static %}
+
+{% block styles %}
+    {# If your application itself needs its own js and css, load it here. #}
+    <link rel="stylesheet" type="text/css" href="{% static 'proses/card-pin.css' %}"
+          xmlns:background-image="http://www.w3.org/1999/xhtml"/>
+    <link href="https://fonts.googleapis.com/css?family=Tangerine:700&display=swap" rel="stylesheet">
+{% endblock %}
+{% block search_bar %}
+{% endblock %}
+
+{% block template_head %}
+    <!-- Comment out for non-index pages -->
+    <div class="index_header text-center">
+        Index of Middle English Prose
+    </div>
+{% endblock %}
+{% block head_subtitle %}
+    <section id="index_about" class="about_panel">
+        <div class="container">
+            <div class="media-container-row">
+                <div class="mbr-text col-12 mbr-fonts-style display-7 col-md-12"><p>
+                    <p class="text-center">A website based on the indexes in the individual volumes of the <em>Index of Middle English Prose</em><br/>
+                    Compiled by Kari Anne Rand (University of Oslo)<br/>
+                    with the assistance of Richard Barber (Boydell & Brewer)<br/>
+                    and Oliver Pickering (University of Leeds)
+                    </p>
+                    <p><em><strong>About</strong></em></p>
+                    <p>The <em>Index of Middle English Prose</em>, which began publication in 1984, aims to catalogue all items
+                        of Middle English prose surviving in manuscript form. Its founding General Editor was A. S. G.
+                        Edwards. Twenty-three volumes, covering the contents of over seventy manuscript collections,
+                        have now been published by D. S. Brewer, Cambridge.</p>
+                    <p><em><strong>Summary lists of the volume contents</strong></em></p>
+                    <p>
+                        The IMEP website contains a <a href="{% url 'proses:volumes' %}">full list
+                        of volumes and summary lists of their prose
+                        contents</a>. There is also an
+                        explanatory list of <a href="{% static 'Abbreviated_names.pdf' %}">abbreviated names</a> of all
+                        the manuscript collections.
+                    </p>
+
+                    <p>
+                        <em><strong>Searchable indexes</strong></em>
+
+                    <p>More importantly, and courtesy of Boydell & Brewer Ltd, the website gives access to searchable
+                        indexes to the volumes, providing a valuable research tool for Middle English
+                        scholars. The merged indexes to volumes 1-23 are now freely available for searching, as
+                        follows:
+                    <ul>
+                        <li><a href="{% url 'proses:incipit' %}">Incipits</a> (the opening words of a text). Acephalous
+                            (headless) incipits will be found at the end of the list.
+                        </li>
+                        <li><a href="{% url 'proses:explicit' %}">Reverse explicits</a> (the closing words of a text,
+                            alphabetized according to the final word). Incomplete (atelous) explicits will be found at the end of
+                            the list. This index is new. It was not included in the printed <em>Index to Volumes
+                                I-XX</em> for reasons of space and cost.
+                        </li>
+                        <li><a href="{% url 'proses:title' %}">Titles, rubrics and colophons of texts</a>. Modern titles can also be found here.</li>
+                        <li><a href="{% url 'proses:subject' %}">A general index</a>, principally of subjects and names.</li>
+                    </ul>
+                    <p>
+                        If you wish to search using the characters þ or ӡ, you can copy them from this sentence before
+                        proceeding to the indexes.
+                    </p>
+                    <p>
+                        Searching any of these indexes will produce a list of results sorted alphabetically. The second
+                        and third columns (the manuscript reference and the volume number) can also be sorted by
+                        clicking on their headings. Please be aware, however, that the indexes to the individual volumes
+                        have not been compiled to a standard pattern, with resulting inconsistencies. In particular the
+                        Incipits index contains some rubrics. For a detailed explanation, see the Introduction to the
+                        printed <em>Index of Middle English Prose: Index to Volumes I-XX</em>, compiled by Kari
+                        Anne Rand
+                        (Cambridge: Brewer, 2014).
+                    </p>
+                    <em><strong>Advanced search with Regular Expressions</strong></em>
+
+                    <p>
+                        <br>
+                        IMEP search uses what are known as Regular Expressions, which are especially valuable when
+                        searching for variant spellings. Click <a
+                            href="{% static 'imep_regex_guide.pdf' %}">here</a> for a more detailed guide, including
+                        further examples, but the following techniques are particularly useful. Note that if you search
+                        without using Regular Expressions, the string of characters in question will be found wherever it
+                        appears, including as part of a word.<br>
+                    <ul style="padding-left: 25px; padding-bottom: 0;">
+                        <li>
+                            To search for consecutive words, key them in, e.g. <b>holy gost</b>
+                        </li>
+                        <li>
+                            To search for non-consecutive words, separate them with .*, e.g. <b>boke .* brut</b>
+                        </li>
+                        <li>
+                            To search for a string of characters at the start of an item, use <b>^</b>, e.g. <b>^gre</b>
+                        </li>
+                        <li>
+                            For a single-character wildcard, use a point, as in <b>w.men</b> or <b>med.c.ne</b>
+                            (note that a point also serves as a truncation symbol at the end of a word)
+                        </li>
+                        <li>
+                            To search for a word beginning or ending in a certain way use <b>\y</b> at beginning or end,
+                            e.g. <b>\ywom</b> or <b>man\y</b>
+                        </li>
+                        <li>
+                            To isolate a word, use <b>\y</b> at both beginning and end, e.g. <b>\ywoman\y</b> or (using
+                            a wildcard) <b>\ywom.n\y</b>
+                        </li>
+                        <li>
+                            To search for specific alternative spellings, put the relevant letters in square brackets,
+                            as in <b>hea[vu]en</b>
+                        </li>
+                        <li>
+                            To search for alternative spellings involving more than one character, you can use round
+                            brackets and the vertical bar character (<b>|</b>), as in <b>(þ|th)e</b>
+                        </li>
+
+                        <li>These various techniques can be combined, as in <b>ser[vu](a|au)nt</b> or
+                            <b>ser.(a|au)nt</b> or as in <b>(&|\yand\y)</b> to search for ampersands as well as the word
+                            'and'
+                        </li>
+
+                    </ul>
+                    </p>
+                    <p><em><strong>Browsing the indexes</strong></em></p>
+                    <p>
+                        The Regular Expressions search function will to a large extent help users find specific items,
+                        but it is anticipated that they will also need to browse through the indexes. In this connection
+                        it may be helpful to be aware that the sorting order of items in the electronic indexes differs
+                        from that in the individual IMEP volumes and the printed <em>Index to Volumes I–XX</em>. Details can be
+                        found <a href="{% static 'Sorting_order.pdf'%}">here</a>.
+                    </p>
+                    <p><em><strong>Forthcoming volumes</strong></em></p>
+                    <p>
+                        Work is currently in progress on a number of new volumes. The first to appear are expected to be those for the New York City libraries and Trinity College, Dublin. Other volumes in progress will cover manuscripts at Harvard and Yale; in Magdalene College, Cambridge; London libraries (excluding the British Library, Lambeth Palace Library and the Wellcome Library); the Bodley Collection, Bodleian Library, Oxford; Glasgow University Library; Stowe and Arundel Collections, British Library; the Wellcome Library, London; South-West England; St John’s College, Cambridge; Cotton Collection, British Library; German libraries; Edinburgh libraries. If you are interested in compiling or helping to compile a volume, please contact the editors. 
+                    </p>
+
+                    <p><em><strong>Editorial Committee</strong></em></p>
+                    <ul>
+                        <li>Professor Kari Anne Rand (General Editor)</li>
+                        <li>Professor Michael Kuczynski (Co-Editor)</li>
+                        <li>Professor Veronica O’Mara (Co-Editor)</li>
+                        <li>Dr Oliver Pickering (Consulting Editor)</li>
+                    </ul>
+                    <p><em><strong>Advisory Board Members</strong></em></p>
+                    <ul>
+                        <li>Professor Anthony Bale</li>
+                        <li>Professor Richard Beadle</li>
+                        <li>Professor Margaret Connolly (Chair)</li>
+                        <li>Professor Julia Crick</li>
+                        <li>Professor Ralph Hanna</li>
+                        <li>Dr William Marx</li>
+                        <li>Professor Matti Peikola</li>
+                        <li>Professor Susan Powell</li>
+                        <li>Professor Denis Renevey</li>
+                        <li>Ms Pamela Robinson</li>
+                        <li>Professor Sebastian Sobecki</li>
+                        <li>Dr Elizabeth Solopova</li>
+                        <li>Professor Peter Stokes</li>
+                        <li>Dr Jacob Thaisen</li>
+
+                    </ul>
+                    <p><em><strong>Future developments</strong></em></p>
+                    <p>
+                        Indexes to forthcoming volumes will be added as they become available. Inconsistencies resulting from the
+                        editing of early volumes will be removed.
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+{% block content_body %}
+    <section id="index_menu" class="option_panel">
+        <div class="row">
+
+            <div class="card-pin col-lg-3 col-sm-6 col-md-3">
+                <div class="card-inner">
+                    <img typeof="foaf:Image" class="img-responsive"
+                         src="{% static 'images/MS-DD-00009-00018-000-00068-V_309x275.png' %}"
+                         width="309" height="275" alt="Link to Incipits">
+                    <a href="{% url 'proses:incipit' %}">
+                        <h2>Incipits</h2>
+                        <p>The opening words of a text</p>
+
+                        <p style="font-size:10px!important; color:#FFE666;">MS CUL Dd.9.18, f. 68v</p>
+                        <!-- <p class="card-btn"> <span class="btn btn-md btn-primary">button </span> </p> -->
+                    </a>
+                </div>
+            </div>
+
+            <div class="card-pin col-lg-3 col-sm-6 col-md-3">
+                <div class="card-inner">
+
+                    <img typeof="foaf:Image" class="img-responsive"
+                         src="{% static 'images/MS-DD-00001-00027-000-00079-V_309x275.png' %}"
+                         width="309" height="275" alt="Link to Explicits"> <a
+                        href="{% url 'proses:explicit' %}">
+                    <h2>Reverse Explicits</h2>
+                    <p>The closing words of a text, alphabetized according to the final word</p>
+                    <p style="font-size:10px!important; color:#FFE666;">MS CUL Dd.1.27, f. 79v</p>
+                    <!-- <p class="card-btn"> <span class="btn btn-md btn-primary">button </span> </p> -->
+                </a>
+
+                </div>
+            </div>
+
+            <div class="card-pin col-lg-3 col-sm-6 col-md-3">
+                <div class="card-inner">
+                    <img typeof="foaf:Image" class="img-responsive"
+                         src="{% static 'images/MS-DD-00001-00027-000-00252-V_309x275.png' %}"
+                         width="309" height="275" alt="Link to Titles and Rubrics">
+                    <a href="{% url 'proses:title' %}">
+                        <h2>Titles and Rubrics</h2>
+                        <br>
+                        <p style="font-size:10px!important; color:#FFE666;">MS CUL Dd.1.27, f. 252v</p>
+                        <!-- <p class="card-btn"> <span class="btn btn-md btn-primary">button </span> </p> -->
+                    </a>
+                </div>
+            </div>
+
+            <div class="card-pin col-lg-3 col-sm-6 col-md-3">
+
+                <div class="card-inner">
+
+                    <img typeof="foaf:Image" class="img-responsive"
+                         src="{% static 'images/MS-EE-00004-00030-000-00004-R_309x275.png' %}"
+                         width="309" height="275" alt="Link to General Index"> <a
+                        href="{% url 'proses:subject' %}">
+                    <h2>General Index</h2>
+                    <p>A general index including subjects and names</p>
+                    <p style="font-size:10px!important; color:#FFE666;">MS CUL Ee.4.30, f. 4</p>
+                    <!-- <p class="card-btn"> <span class="btn btn-md btn-primary">button </span> </p> -->
+                </a>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block cdh-menu-list %}
+    <!--
+    <li><a href="{{ url }}/proses/incipits">Incipits</a></li>
+    <li><a href="{{ url }}/proses/explicits">Explicits</a></li>
+    <li><a href="{{ url }}/proses/subjects">Subjects</a></li>
+    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Section 4 <span
+            class="caret"></span></a>
+        <ul class="dropdown-menu">
+            <li><a href="#section41">Section 4-1</a></li>
+            <li><a href="#section42">Section 4-2</a></li>
+        </ul>
+    </li>
+--->
+{% endblock %}
+
+{% block local_footer %}
+    <div class="campl-row campl-local-footer campl-app-footer">
+        <div class="campl-wrap clearfix">
+            <div class="campl-column6 campl-footer-navigation">
+                <p class="campl-app-footer-content">
+                    {% block blurb %}
+                        <a href="https://www.cdh.cam.ac.uk/lab"><img class="campl-scale-with-grid"
+                                                                     src="{% static 'images/cdh/cdh-lab.png' %}"
+                                                                     width="178"
+                                                                     alt="CDH Lab"></a>
+
+                    {% endblock %}
+                </p>
+            </div>
+            <div class="campl-column3 campl-footer-navigation">
+                <div class="campl-content-container campl-navigation-list">
+                    {% block footer1 %}
+                        <h3><a href="http://www.lib.cam.ac.uk/research/digital-humanities">Digital Humanities</a>
+                        </h3>{% endblock %}
+                </div>
+            </div>
+            <div class="campl-column3 campl-footer-navigation last">
+                <div class="campl-content-container campl-navigation-list">
+                    {% block footer2 %}
+                        <h3><a href="http://www.lib.cam.ac.uk">Software Development at the Cambridge University
+                            Library</a></h3>{% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block campl_foot_js %}
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous">
+    </script>
+    <script>
+        $(function () {
+            $('a[href*=#]').on('click', function (e) {
+                e.preventDefault();
+                $('html, body').animate({scrollTop: $($(this).attr('href')).offset().top}, 500, 'linear');
+            });
+        });
+    </script>
+{% endblock %}
