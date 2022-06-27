@@ -1,8 +1,12 @@
+from urllib.parse import quote
 from django import forms
 from django.http import HttpResponseBadRequest, HttpResponse
 from django.shortcuts import render
 from django.views import generic
 from django_tables2 import RequestConfig
+from django.db.models import Q
+
+import requests
 
 from .import_file import *
 from .tables import *
@@ -55,7 +59,10 @@ def prose_table(request):
         search_val = None
 
     if search_val and len(search_val)>0:
-        pbs = ProseBook.objects.filter(prose__type=name, prose__prose_text__iregex=search_val.strip())
+        response = requests.get('https://tekstlab.uio.no/imep_search', params={'query': search_val})
+        fuzzy_search_ids = response.text.split(',')
+        pbs = ProseBook.objects.filter(Q(prose__type=name, prose__prose_text__iregex=search_val.strip()) | Q(prose__type=name, prose_id__in=fuzzy_search_ids))
+
         breadcrumbs[1] = dict(name='Query: ' + search_val, url=request.path + '?query=' + search_val)
     else:
         pbs = ProseBook.objects.filter(prose__type=name)
