@@ -61,11 +61,15 @@ def prose_table(request):
     if search_val and len(search_val)>0:
         response = requests.get('https://tekstlab.uio.no/imep_search', params={'query': search_val})
         fuzzy_search_ids = response.text.split(',')
-        pbs = ProseBook.objects.filter(Q(prose__type=name, prose__prose_text__iregex=search_val.strip()) | Q(prose__type=name, prose_id__in=fuzzy_search_ids))
+        fuzzy_search_rankings = dict(map(lambda args: (args[1], args[0]), enumerate(fuzzy_search_ids)))
+        exact_matches = ProseBook.objects.filter(prose__type=name, prose__prose_text__iregex=search_val.strip())
+        exact_match_ids = set(map(lambda pb: pb.prose_id, exact_matches))
+        pbs = list(ProseBook.objects.filter(Q(prose__type=name, prose__prose_text__iregex=search_val.strip()) | Q(prose__type=name, prose_id__in=fuzzy_search_ids)))
+        pbs.sort(key = lambda pb: pb.prose_id in exact_match_ids and -1 or fuzzy_search_rankings.get(str(pb.prose_id), -1))
 
         breadcrumbs[1] = dict(name='Query: ' + search_val, url=request.path + '?query=' + search_val)
     else:
-        pbs = ProseBook.objects.filter(prose__type=name)
+        pbs = list(ProseBook.objects.filter(prose__type=name))
         search_val = None
 
     if name == 'incipit':
@@ -82,7 +86,7 @@ def prose_table(request):
                   {'site_name': VIEW_TYPES[name],
                    'table_name':
                        '' if search_val is None else
-                       'Found ' + str(pbs.count()) + ' ' + VIEW_TYPES[name] + ' containing: ' + search_val,
+                       'Found ' + str(len(pbs)) + ' ' + VIEW_TYPES[name] + ' containing: ' + search_val,
                    'table': table,
                    'breadcrumbs': breadcrumbs,
                    'query_text': "" if search_val is None else search_val,
