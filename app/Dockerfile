@@ -18,7 +18,7 @@ RUN apk update \
 
 # install dependencies
 RUN pip install --upgrade pip
-RUN pip install pipenv
+RUN pip install pipenv==2018.10.9
 COPY ./Pipfile /usr/src/app/Pipfile
 RUN pipenv install --skip-lock --system
 
