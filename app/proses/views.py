@@ -59,7 +59,7 @@ def prose_table(request):
         search_val = None
 
     if search_val and len(search_val)>0:
-        response = requests.get('https://tekstlab.uio.no/imep_search', params={'query': search_val})
+        response = requests.get('https://tekstlab.uio.no/imep_search', params={'query': search_val, 'type': name})
         fuzzy_search_ids = response.text.split(',')
         fuzzy_search_rankings = dict(map(lambda args: (args[1], args[0]), enumerate(fuzzy_search_ids)))
         exact_matches = ProseBook.objects.filter(prose__type=name, prose__prose_text__iregex=search_val.strip())
